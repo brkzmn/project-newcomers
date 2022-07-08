@@ -1,0 +1,178 @@
+.header-intro {
+  background-color: hsl(0, 14%, 93%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.hero {
+  width: 100%;
+  height: auto;
+}
+
+.title-intro {
+  color: hsl(220, 23%, 23%);
+  margin-top: 0.6rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  align-self: center;
+  display: flex;
+  align-content: center;
+  align-items: flex-end;
+  padding: 20px;
+}
+.intro-header-title {
+  color: hsl(0, 0%, 98%);
+  background: hsla(223, 47%, 42%, 0.5);
+  border-radius: 0.5rem;
+}
+.header-nav-col {
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-right: 10%;
+}
+.header-btn-col-intro {
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 2rem;
+}
+.header-intro .btn-guide {
+  color: hsl(0, 0%, 98%);
+  background-color: hsla(35, 78%, 49%, 0.8);
+  cursor: pointer;
+  min-width: 11rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  border: none;
+  transition: all 0.4s ease-out;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+}
+.header-intro .btn-home {
+  padding: 0.2rem 0.4rem;
+  min-width: min-content;
+}
+.btn-guide:hover,
+.btn-top:hover {
+  color: hsl(220, 23%, 23%);
+  background-color: hsl(0, 42%, 81%);
+}
+.btn-top {
+  display: flex;
+  justify-content: center;
+  color: hsl(0, 0%, 98%);
+  background-color: hsl(35, 78%, 49%);
+  cursor: pointer;
+  width: 5rem;
+  text-align: center;
+  border: none;
+  transition: all 0.4s ease-out;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  position: absolute;
+  right: 1.3rem;
+  bottom: 1.3rem;
+}
+a.btn-guide {
+  text-decoration: none;
+}
+.btn-intro {
+  margin-top: 1.5rem;
+  color: hsl(0, 0%, 98%);
+  background-color: hsl(35, 78%, 49%);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+.react-icons {
+  vertical-align: middle;
+  text-align: center;
+}
+.feature {
+  /* background-color: hsl(0, 14%, 93%); */
+  display: flex;
+}
+
+.feature-img-container {
+  width: 50%;
+}
+
+.feature-img-container img {
+  width: 100%;
+  height: 100%;
+}
+
+.feature-description {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.news-desc {
+  position: relative;
+}
+.feature-para {
+  /* color: hsl(0, 0%, 25%); */
+  width: 90%;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 900px) {
+  .header,
+  .feature {
+    flex-direction: column;
+  }
+  .title-intro {
+    font-size: 1.5rem;
+  }
+
+  .feature {
+    height: auto;
+  }
+
+  .flip {
+    flex-direction: column-reverse;
+  }
+
+  .header-btn-col-intro,
+  .feature-img-container,
+  .feature-description {
+    width: 100%;
+  }
+  .header-btn-col-intro {
+    flex-wrap: wrap;
+  }
+  .header-btn-col-intro .btn-guide {
+  }
+  .header-nav-col {
+    width: 100%;
+    padding-right: 0;
+  }
+  .feature-description {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  .btn-top {
+    width: 3rem;
+    padding: 0.5rem 0.5rem;
+  }
+
+  .mobile-mt {
+    margin-top: 1rem;
+  }
+}

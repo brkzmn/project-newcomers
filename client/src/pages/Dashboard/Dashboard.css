@@ -1,0 +1,360 @@
+* {
+  box-sizing: border-box;
+}
+
+.dashboard-container {
+  min-height: 80vh;
+  width: 100%;
+}
+.dashboard-header-btn-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.dashboard-header-btn-wrapper .btn {
+  margin-bottom: 0;
+  padding: 0.5rem;
+  max-width: calc(50% - 1rem);
+}
+.user-info-wrapper {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+  min-height: 200px;
+  padding: 1rem 1rem 1rem 0;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.user-img-container {
+  width: 100%;
+  height: 7rem;
+  align-self: flex-start;
+  display: flex;
+  justify-content: center;
+}
+
+.user-img-container img {
+  border-radius: 50%;
+  object-fit: cover;
+  width: auto;
+  height: 100%;
+}
+.activity-wrapper {
+  background-color: #fffafa;
+  width: 40%;
+  min-height: 300px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.user-activity-wrapper {
+  width: 100%;
+  /* min-height: 300px; */
+  padding: 3rem 0;
+  /* background-color: #f0ebeb; */
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.user-header {
+  width: 100%;
+  padding: 2% 5%;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.activity-wrapper-header {
+  width: 100%;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  /* margin-bottom: 1rem; */
+  /* margin-top: 0.7rem; */
+  color: var(--light-foreground);
+  text-align: center;
+  color: hsl(0, 0%, 98%);
+  background-color: hsla(35, 78%, 49%, 0.9);
+}
+
+.latest-news-wrapper {
+  position: relative;
+  width: 100%;
+  height: min-content;
+  margin: 2rem 0;
+  /* background-color: #d9d9d9; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.latest-news-details-wrapper {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  height: 450px;
+  overflow-y: auto;
+}
+
+.latest-news-img-wrapper {
+  width: 40%;
+  display: flex;
+  align-items: center;
+}
+
+.latest-news-img {
+  width: 100%;
+  height: auto;
+  margin-top: auto;
+}
+
+.latest-news-header {
+  height: 10%;
+  width: 100%;
+  padding-left: 5%;
+  margin: 1rem 0;
+  /* padding-top: 2%; */
+}
+
+.connections-status-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 3rem;
+  min-height: 300px;
+  height: min-content;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.connections-status-img-wrapper {
+  width: 40%;
+  height: 500px;
+}
+
+.connections-status-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.connections-status-details-wrapper {
+  width: 60%;
+  display: flex;
+  height: 500px;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  /* background-color: hsl(0, 0%, 100%); */
+}
+
+.connections-status-details-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.connections-status-details-wrapper .recent-connections {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.connections-status-details-wrapper
+  .recent-connections
+  .recent-connections-list {
+  width: 100%;
+  height: 88%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: flex-start;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.dashboard-container .connections-status-details-wrapper .recent-connections {
+  overflow-y: auto;
+}
+
+.connections-status-details-wrapper
+  .recent-connections
+  .recent-connections-title {
+  height: 12%;
+  border: none;
+  padding-left: 5%;
+  padding-top: 2%;
+  text-align: left;
+  font-size: 1.3rem;
+}
+
+.connections-status-details-wrapper
+  .recent-connections-list::-webkit-scrollbar {
+  display: none;
+}
+
+.connections-status-details-wrapper .recent-connections .card {
+  width: 90%;
+  height: 100px;
+  margin: 10px auto;
+  transition-property: width;
+  transition-duration: 300ms;
+  padding: 10px;
+  cursor: pointer;
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;  */
+}
+
+.connections-status-details-wrapper .recent-connections .card:hover {
+  width: 91%;
+}
+
+form.form.changePhoto-form {
+  margin: 0;
+}
+
+.changePhoto-form-wrapper {
+  position: relative;
+}
+
+.change-info-close-btn {
+  position: absolute;
+  top: 2%;
+  right: 5%;
+  font-size: 1.5rem;
+  opacity: 0.8;
+}
+
+.change-info-close-btn:hover {
+  opacity: 1;
+  font-size: 1.6rem;
+}
+
+.changePhoto-form-wrapper > div.form-container {
+  min-height: 30vh;
+}
+
+@media screen and (max-width: 767px) {
+  .user-activity-wrapper {
+    flex-direction: column;
+  }
+  .dashboard-header-btn-wrapper {
+    flex-direction: row;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+  .dashboard-header-title {
+    font-size: 1.2rem;
+  }
+  .dashboard-header-btn-wrapper .btn-guide.dashboard-header-btn {
+    font-size: 0.8rem;
+    min-width: max-width;
+    max-width: calc(50% - 1rem);
+  }
+  .activity-wrapper {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 20px;
+    height: 260px;
+    min-height: 260px;
+    position: relative;
+  }
+
+  .user-header {
+    padding: 5px;
+    width: 100%;
+    /* align-self: flex-start; */
+    text-align: center;
+  }
+
+  .latest-news-wrapper {
+    /* height: 500px;  */
+    flex-direction: column;
+  }
+
+  .latest-news-header {
+    height: 14%;
+    margin: 2rem 0;
+
+    padding: 2% 0;
+    text-align: center;
+  }
+
+  .latest-news-img-wrapper {
+    width: 100%;
+    height: 40%;
+  }
+
+  .latest-news-details-wrapper {
+    width: 100%;
+    height: 500px;
+  }
+
+  .connections-status-wrapper {
+    min-height: 250px;
+  }
+
+  .connections-status-details-wrapper {
+    width: 100%;
+    height: 60%;
+  }
+
+  .connections-status-img-wrapper {
+    width: 100%;
+    height: 40%;
+  }
+
+  .connections-status-img-wrapper img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .user-info-wrapper {
+    flex-direction: row;
+  }
+
+  .user-header {
+    width: 50%;
+  }
+
+  .user-img-container {
+    margin-right: 0;
+    width: 50%;
+    height: 7rem;
+  }
+
+  .dashboard-header-btn-wrapper {
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .latest-news-img-wrapper {
+    width: 40%;
+    display: flex;
+    align-items: center;
+  }
+
+  .latest-news-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

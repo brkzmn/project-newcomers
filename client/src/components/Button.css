@@ -1,0 +1,53 @@
+/*
+  hsl(220, 23%, 23%)
+  hsl(0, 0%, 98%)
+  hsl(0, 0%, 85%)
+*/
+
+.btn {
+  color: hsl(0, 0%, 98%);
+  background-color: hsla(35, 78%, 49%, 0.9);
+  cursor: pointer;
+  margin-bottom: 2rem;
+  border: none;
+  border-radius: 0.3rem;
+  transition: all 0.4s ease-out;
+}
+
+.btn-inline {
+  width: 9.5rem;
+  font-size: 1rem;
+  padding: 0.7rem 0;
+}
+
+.form-btn-link {
+  background: transparent;
+  border: none;
+  color: blue;
+  width: max-content;
+  padding: 0.7rem 0;
+  font-size: 1rem;
+  text-decoration: underline;
+}
+
+.btn-block {
+  width: 100%;
+  margin: 0.5rem;
+  padding: 1rem 0;
+  font-size: 1.4rem;
+}
+
+.btn:last-child {
+  margin-bottom: 0;
+}
+
+.btn:hover {
+  color: hsl(220, 23%, 23%);
+  background-color: hsl(0, 42%, 81%);
+}
+
+@media screen and (max-width: 900px) {
+  .btn-inline {
+    width: 70%;
+  }
+}

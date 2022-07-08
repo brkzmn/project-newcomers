@@ -1,0 +1,29 @@
+.login-extra-actions {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.create-user,
+.forgot-password {
+  width: 48%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-extra-actions {
+  margin: 0.5rem;
+}
+.create-user p {
+  margin-right: 0.5rem;
+}
+
+@media screen and (max-width: 1080px) {
+  .login-extra-actions {
+    flex-direction: column;
+  }
+  .create-user,
+  .forgot-password {
+    width: 100%;
+  }
+}

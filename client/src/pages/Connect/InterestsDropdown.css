@@ -1,0 +1,24 @@
+.interests-dd {
+  border-radius: 0.5rem;
+  background-color: hsl(0, 0%, 100%);
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 5rem;
+}
+
+.interests-dd-item {
+  border-bottom: 1px solid hsla(0, 0%, 0%, 0.6);
+  padding: 1rem;
+  cursor: pointer;
+  color: hsl(0, 0%, 0%);
+}
+
+.interests-dd-item:last-child {
+  border: none;
+}
+
+.interests-dd-item:hover {
+  background-color: hsl(0, 0%, 0%, 0.6);
+  color: hsl(0, 0%, 100%);
+}

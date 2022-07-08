@@ -1,0 +1,12 @@
+#interest-input {
+  display: inline-block;
+  outline: none;
+  background: none;
+  font-size: 1.2rem;
+  padding-bottom: 0.2rem;
+  margin-top: 0.5rem;
+  border: none;
+  width: 6rem;
+  max-width: max-content;
+  border-bottom: 1px solid hsla(0, 0%, 0%, 0.5);
+}

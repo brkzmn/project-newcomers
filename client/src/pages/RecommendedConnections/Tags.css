@@ -1,0 +1,13 @@
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.tag {
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  background-color: hsla(0, 0%, 0%, 0.5);
+  color: hsl(0, 0%, 100%);
+  margin-right: 0.5rem;
+}

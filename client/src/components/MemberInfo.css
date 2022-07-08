@@ -1,0 +1,36 @@
+.member-info {
+  margin-top: 4rem;
+  padding: 2rem;
+  border-radius: 0.4rem;
+  background-color: hsl(0, 0%, 100%);
+}
+
+.member-name {
+  color: hsla(0, 0%, 0%, 0.87);
+  margin-bottom: 0.5rem;
+}
+
+.member-occupation {
+  color: hsla(0, 0%, 0%, 0.6);
+  margin-bottom: 3rem;
+}
+
+.member-description {
+  color: hsla(0, 0%, 0%, 0.87);
+}
+
+.social {
+  padding-top: 4rem;
+  display: flex;
+}
+
+.social a {
+  color: blue;
+  margin-right: 2rem;
+  text-decoration: none;
+}
+
+.social a:active,
+.social a:hover {
+  color: blue;
+}

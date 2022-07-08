@@ -1,0 +1,30 @@
+.interest {
+  display: flex;
+  margin-right: 0.2rem;
+  margin-top: 0.5rem;
+  width: max-content;
+  justify-content: space-between;
+  background-color: hsl(0, 0%, 0%, 0.6);
+  border-radius: 0.2rem;
+}
+
+.interest-text {
+  padding: 0.6rem;
+  color: hsl(0, 0%, 100%);
+}
+
+.btn-close {
+  color: hsl(0, 0%, 100%);
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-top-right-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-close:hover {
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 0%, 0.6);
+}

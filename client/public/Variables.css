@@ -1,0 +1,69 @@
+:root{
+  --dark-foreground:#EEEEEE;
+  --dark-background:#222222;
+  --light-foreground:#333333;
+  --light-background:#eeeeee;
+  --primary-orange:hsla(35, 78%, 49%, 0.8);
+}
+
+.dark{
+  background-color:var(--dark-background);
+  color:var(--dark-foreground);
+}
+.light{
+  background-color:var(--light-background);
+  color:var(--light-foreground);
+}
+.light-text{
+ color: var(--dark-foreground) ;
+}
+.dark-text {
+  color:var(--light-foreground);
+}
+.light-shadow {
+  box-shadow:var(--light-background) 0px 2px 5px -1px ,
+  var(--light-foreground) 0px 1px 3px -1px
+}
+.dark-shadow {
+  box-shadow:rgba(50, 50, 93, 0.25) 0px 2px 5px -1px ,
+  rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.dark-shadow-l {
+  box-shadow: 0px 8px 14px rgba(0, 0, 0, 0.2);
+}
+body::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+#root {
+  position: relative;
+  min-height:100vh;
+ 
+}
+#app-wrapper {
+  min-height: 100vh;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+body::-webkit-scrollbar-thumb{
+  background-color: var(--primary-orange); /* or add it to the track */
+  border-radius: 10px;
+}
+.scroll::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+
+.scroll::-webkit-scrollbar-thumb{
+  background-color: var(--primary-orange); /* or add it to the track */
+  border-radius: 10px;
+}
+
+.scroll-narrow::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.scroll-narrow::-webkit-scrollbar-thumb {
+  background-color: var(--primary-orange);
+}

@@ -1,0 +1,147 @@
+.first-name-wrapper,
+.password-wrapper,
+.email-input-wrapper,
+.userType-input-wrapper {
+  width: 45%;
+}
+
+.last-name-wrapper,
+.confirm-password-wrapper,
+.phone-input-wrapper,
+.birthDay-input-wrapper,
+.profile-image-wrapper {
+  width: 45%;
+  margin-left: auto;
+}
+
+.input-checkbox-container {
+  margin: 0.5rem;
+}
+
+.input-checkbox {
+  margin-right: 0.5rem;
+}
+.input {
+  width: 100%;
+  min-height: 1.8rem;
+  padding: 0.8rem;
+  outline: none;
+  border-radius: 0.5rem;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+.profile-image-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.profile-image-input::before {
+  content: "Upload your Image";
+  display: inline-block;
+  /* background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3); */
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.profile-image-input:hover::before {
+  border-color: black;
+}
+.profile-image-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+.hint-sign {
+  cursor: pointer;
+  position: relative;
+  padding: 2px;
+}
+.hint {
+  position: absolute;
+  padding: 2rem;
+  width: max-content;
+  border-radius: 1rem;
+  top: -11.5rem;
+  background-color: hsl(0, 0%, 100%);
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+}
+.password-hint {
+  left: 5rem;
+}
+
+.userName-hint {
+  left: 2rem;
+  width: 70%;
+}
+
+.hint h3 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.password-wrapper,
+.username-wrapper {
+  position: relative;
+}
+
+.PhoneInput {
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 0.31rem 0.8rem;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.PhoneInputInput {
+  width: 100%;
+  min-height: 1.8rem;
+
+  outline: none;
+
+  overflow-x: scroll;
+  border: none;
+}
+.PhoneInputCountrySelect {
+  background-color: transparent;
+}
+form span p.error-msg {
+  color: red;
+  font-size: 0.9rem;
+  width: 100%;
+  text-align: center;
+}
+.required-star {
+  color: red;
+  padding: 2px;
+}
+@media screen and (max-width: 900px) {
+  .first-name-wrapper,
+  .last-name-wrapper {
+    width: 100%;
+    margin-left: 10px;
+  }
+  .hint-sign {
+    position: static;
+    display: flex;
+  }
+  .hint {
+    position: absolute;
+    padding: 2rem;
+  }
+  .userName-hint {
+    position: absolute;
+    padding: 2rem;
+    z-index: 1;
+    top: 6rem;
+    left: -1rem;
+    width: 100%;
+  }
+  .password-hint {
+    width: max-content;
+    z-index: 1;
+    top: -12rem;
+    left: -1rem;
+  }
+}

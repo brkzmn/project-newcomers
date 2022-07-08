@@ -1,0 +1,11 @@
+.dropdown {
+  width: 90%;
+  padding: 2rem 0rem;
+  position: absolute;
+  z-index: 2;
+  left: 5%;
+  top: 8rem;
+  border-radius: 8px;
+  background-color: hsl(0, 0%, 85%);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+}

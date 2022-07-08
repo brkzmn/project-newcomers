@@ -1,0 +1,23 @@
+.interests-filter {
+  background-color: hsl(0, 0%, 100%);
+  display: flex;
+  position: relative;
+  border-radius: 0.5rem;
+}
+.interests-bar {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 0.4rem;
+}
+
+.interests-dd-toggle {
+  color: hsl(0, 0%, 0%);
+  background: transparent;
+  border: none;
+  padding: 0.5rem;
+  font-size: 1.7rem;
+  cursor: pointer;
+}

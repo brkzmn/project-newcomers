@@ -1,0 +1,19 @@
+.profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-bottom: 1.4rem;
+}
+
+.profile img {
+  border-radius: 50%;
+  width: 3.2rem;
+  height: 3.2rem;
+}
+
+.profile .profile-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 0.8rem;
+}

@@ -1,0 +1,12 @@
+.contact-form-title-wrapper {
+  padding: 10px;
+}
+.contact-title {
+  margin: 1rem;
+}
+.contact-form-title-wrapper p {
+  margin: 1rem;
+}
+.message-wrapper {
+  min-height: 200px;
+}

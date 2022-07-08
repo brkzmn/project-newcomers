@@ -1,0 +1,15 @@
+.news-page-container {
+  min-height: 80vh;
+  background-color: hsl(0, 14%, 93%);
+}
+
+.news-page-container .news-content-wrapper {
+  min-height: 25vh;
+}
+
+.created-news-details-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}

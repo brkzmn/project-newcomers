@@ -1,0 +1,43 @@
+.recommended-connections {
+  padding: 2rem;
+  /* background-color: hsl(0, 53%, 91%); */
+  min-height: 70vh;
+}
+/* .recommended-connections .card h3,
+.recommended-connections .card h5 {
+  color: var(--light-foreground);
+} */
+.card-wrapper {
+  background-color: hsl(0, 0%, 100%);
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-wrapper {
+  height: 40%;
+  align-self: center;
+}
+
+.btn-wrapper,
+.empty-users-fallback {
+  padding: 1rem;
+}
+
+@media screen and (max-width: 900px) {
+  .card-wrapper {
+    flex-direction: column;
+  }
+
+  .btn-wrapper {
+    align-self: flex-start;
+  }
+
+  .btn-inline {
+    width: max-content;
+    padding: 0.5rem;
+  }
+}
