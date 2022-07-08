@@ -16,7 +16,7 @@ mongoose.connection.on("error", (error) => {
   logInfo("ERROR:" + error);
 });
 const connectDB = async () => {
-  return await mongoose.connect(process.env.MONGODB_URL, {
+  return mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });

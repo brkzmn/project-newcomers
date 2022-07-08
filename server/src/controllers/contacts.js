@@ -1,7 +1,6 @@
-import { /* logInfo, */ logError } from "../util/logging.js";
+import { logError } from "../util/logging.js";
 import User from "../models/User.js";
-//import { Message } from "../models/Message.js";
-//import { io } from "../index.js";
+
 export const getContacts = async (req, res) => {
   try {
     const userName = req.userName;
