@@ -45,7 +45,7 @@ const activitySchema = new mongoose.Schema(
       street: { type: String, required: true },
       postCode: { type: String, required: true },
     },
-    maxPeople: Number,
+    maxPeople: { type: Number, required: true },
   },
   { timestamps: true }
 );
