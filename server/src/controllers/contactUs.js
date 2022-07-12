@@ -4,6 +4,7 @@ import nodemailer from "nodemailer";
 export const contactUs = async (req, res) => {
   try {
     const { name, email, subject, message } = req.body;
+
     const transporter = nodemailer.createTransport({
       service: "gmail",
       host: "smtp.google.com", //replace with your email provider
@@ -13,6 +14,7 @@ export const contactUs = async (req, res) => {
         pass: process.env.PASSWORD,
       },
     });
+
     // verify connection configuration
     transporter.verify(function (error) {
       if (error) {
@@ -34,14 +36,15 @@ export const contactUs = async (req, res) => {
       const mail = {
         from: email,
         to: process.env.EMAIL,
-        subject: subject,
+        subject: `SUBJECT: ${subject} SENDER: ${email}`,
         text: message,
+        replyTo: email,
       };
-      transporter.sendMail(mail, (err, data) => {
+
+      transporter.sendMail(mail, (err) => {
         if (err) {
           throw err;
         } else {
-          logInfo(data);
           res.status(200).json({
             success: true,
           });

@@ -12,12 +12,19 @@ import { AuthContext } from "../../AuthContext";
 
 const News = () => {
   const [newsData, setNewsData] = useState(null);
+  const [noNews, setNoNews] = useState(null);
   const [newsCategory, setNewsCategory] = useState("all");
   const { isAuthenticated } = useContext(AuthContext);
   const { userDetails } = useUserDetails();
 
   const onSuccess = (response) => {
-    setNewsData(response.result);
+    if (!response.result) {
+      setNoNews(true);
+      setNewsData(null);
+    } else {
+      setNoNews(false);
+      setNewsData(response.result);
+    }
   };
   const { isLoading, error, performFetch, cancelFetch } = useFetch(
     `/news/category/${newsCategory}`,
@@ -56,13 +63,10 @@ const News = () => {
       </div>
 
       <div className="news-section-wrapper">
-        {newsData && newsData.length === 0 && (
+        {noNews && (
           <div className="no-news-text-wrapper">
-            {newsCategory === "all" ? (
-              <p>There is no news yet</p>
-            ) : (
-              <p>There is no news in this category yet</p>
-            )}
+            {" "}
+            {`There is no news ${newsCategory ? `in ${newsCategory} ` : ""}`}
           </div>
         )}
         {newsData &&

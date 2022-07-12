@@ -1,7 +1,8 @@
 import Activity from "../models/Activity.js";
 import User from "../models/User.js";
 import mongoose from "mongoose";
-import { logError, logInfo } from "../util/logging.js";
+import { logInfo } from "../util/logging.js";
+import handleRequestError from "../util/handleRequestError.js";
 
 export const getUserActivities = async (req, res) => {
   try {
@@ -14,22 +15,13 @@ export const getUserActivities = async (req, res) => {
     const recommendedActivities = await Activity.find({
       joinedBy: { $ne: mongoose.Types.ObjectId(user._id) },
     });
-    if (!userName) {
-      throw new Error("You are not authenticated.");
-    } else if (!user) {
-      throw new Error("Internal Server Error: User not found");
-    } else if (!upcomingActivities && !recommendedActivities) {
-      throw new Error("There is no upcoming or recommended activities");
-    } else {
-      res.status(200).json({
-        success: true,
-        result: { upcomingActivities, recommendedActivities },
-      });
-    }
-  } catch (e) {
-    return res.status(500).json({
-      msg: `Error in Fetching User Activities: ${e.message}`,
+
+    res.status(200).json({
+      success: true,
+      result: { upcomingActivities, recommendedActivities },
     });
+  } catch (error) {
+    handleRequestError(error, res);
   }
 };
 
@@ -54,22 +46,7 @@ export const getActivities = async (req, res) => {
       });
     }
   } catch (error) {
-    const errors = [];
-    if (error.errors) {
-      Object.keys(error.errors).forEach((key) => {
-        errors.push(`${key} : ${error.errors[key].message}`);
-      });
-      logError(error);
-      return res
-        .status(400)
-        .json({ success: false, msg: `Bad Request: ${errors}` });
-    } else {
-      logError(error);
-      return res.status(500).json({
-        success: false,
-        msg: `Server Error: ${error.message}`,
-      });
-    }
+    handleRequestError(error, res);
   }
 };
 
@@ -98,25 +75,9 @@ export const createActivity = async (req, res) => {
     };
 
     const createdActivity = await Activity.create(activity);
-
     return res.status(201).json({ success: true, result: createdActivity });
   } catch (error) {
-    const errors = [];
-    if (error.errors) {
-      Object.keys(error.errors).forEach((key) => {
-        errors.push(`${key} : ${error.errors[key].message}`);
-      });
-      logError(error);
-      return res
-        .status(400)
-        .json({ success: false, msg: `Bad Request: ${errors}` });
-    } else {
-      logError(error);
-      return res.status(500).json({
-        success: false,
-        msg: `Server Error: ${error.message} not uploaded`,
-      });
-    }
+    handleRequestError(error, res);
   }
 };
 
@@ -125,22 +86,7 @@ export const deleteActivity = async (req, res) => {
     const userName = req.userName;
     logInfo(userName);
   } catch (error) {
-    const errors = [];
-    if (error.errors) {
-      Object.keys(error.errors).forEach((key) => {
-        errors.push(`${key} : ${error.errors[key].message}`);
-      });
-      logError(error);
-      return res
-        .status(400)
-        .json({ success: false, msg: `Bad Request: ${errors}` });
-    } else {
-      logError(error);
-      return res.status(500).json({
-        success: false,
-        msg: `Server Error: ${error.message}`,
-      });
-    }
+    handleRequestError(error, res);
   }
 };
 
@@ -184,57 +130,25 @@ export const joinToActivity = async (req, res) => {
 
     res.status(200).json({
       success: true,
-      // userJoiningStatus,
     });
   } catch (error) {
-    const errors = [];
-    if (error.errors) {
-      Object.keys(error.errors).forEach((key) => {
-        errors.push(`${key} : ${error.errors[key].message}`);
-      });
-      logError(error);
-      return res
-        .status(400)
-        .json({ success: false, msg: `Bad Request: ${errors}` });
-    } else {
-      logError(error);
-      return res.status(500).json({
-        success: false,
-        msg: `Server Error: ${error.message}`,
-      });
-    }
+    handleRequestError(error, res);
   }
 };
 
 export const getUserActivitiesList = async (req, res) => {
   try {
     const { userId } = req.params;
-
     const userDetails = await User.find({
       _id: mongoose.Types.ObjectId(userId),
     });
-
     const getUserActivitiesList = userDetails[0].activities;
-    res.status(200).json({
+
+    return res.status(200).json({
       success: true,
       getUserActivitiesList,
     });
   } catch (error) {
-    const errors = [];
-    if (error.errors) {
-      Object.keys(error.errors).forEach((key) => {
-        errors.push(`${key} : ${error.errors[key].message}`);
-      });
-      logError(error);
-      return res
-        .status(400)
-        .json({ success: false, msg: `Bad Request: ${errors}` });
-    } else {
-      logError(error);
-      return res.status(500).json({
-        success: false,
-        msg: `Server Error: ${error.message}`,
-      });
-    }
+    handleRequestError(error, res);
   }
 };

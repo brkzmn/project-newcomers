@@ -5,7 +5,6 @@ import * as fs from "node:fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import * as bcrypt from "bcrypt";
-//import jwt from "jsonwebtoken";
 
 export const getLoggedInUser = async (req, res) => {
   try {
