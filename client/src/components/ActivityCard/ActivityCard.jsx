@@ -146,7 +146,7 @@ const ActivityCard = ({ activity, userId }) => {
 
 ActivityCard.propTypes = {
   activity: PropTypes.object.isRequired,
-  userId: PropTypes.number.isRequired,
+  userId: PropTypes.string.isRequired,
 };
 
 export default ActivityCard;

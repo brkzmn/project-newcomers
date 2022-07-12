@@ -3,7 +3,7 @@ import useFetch from "../../hooks/useFetch";
 import Form from "../../components/Forms/Form";
 import Button from "../../components/Button";
 import Spinner from "../../components/Spinner/Spinner";
-import Error from "../../components/Error/Error";
+// import Error from "../../components/Error/Error";
 import InputFieldContainer from "../../components/Forms/InputFieldContainer";
 import Label from "../../components/Forms/Label";
 import Input from "../../components/Forms/Input";
@@ -15,16 +15,16 @@ import useUserDetails from "../../hooks/useUserDetails";
 import Modal from "../../components/Modal/Modal";
 
 const CreateActivity = () => {
-  const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("");
-  const [startAt, setStartAt] = useState("");
-  const [endAt, setEndAt] = useState("");
-  const [description, setDescription] = useState("");
-  const [maxPeople, setMaxPeople] = useState("");
-  const [activityData, setActivityData] = useState("");
-  const [city, setCity] = useState("");
-  const [street, setStreet] = useState("");
-  const [postCode, setPostCode] = useState("");
+  const [title, setTitle] = useState(null);
+  const [category, setCategory] = useState(null);
+  const [startAt, setStartAt] = useState(null);
+  const [endAt, setEndAt] = useState(null);
+  const [description, setDescription] = useState(null);
+  const [maxPeople, setMaxPeople] = useState(null);
+  const [activityData, setActivityData] = useState(null);
+  const [city, setCity] = useState(null);
+  const [street, setStreet] = useState(null);
+  const [postCode, setPostCode] = useState(null);
   const [openModal, setOpenModal] = useState(false);
 
   const { userDetails } = useUserDetails();
@@ -36,21 +36,20 @@ const CreateActivity = () => {
   };
 
   const clearForm = () => {
-    setTitle("");
-    setCategory("");
-    setStartAt("");
-    setEndAt("");
-    setDescription("");
-    setMaxPeople("");
-    setCity("");
-    setStreet("");
-    setPostCode("");
+    setTitle(null);
+    setCategory(null);
+    setStartAt(null);
+    setEndAt(null);
+    setDescription(null);
+    setMaxPeople(null);
+    setCity(null);
+    setStreet(null);
+    setPostCode(null);
   };
 
   const onSuccess = (response) => {
     setActivityData(response.result);
     clearForm();
-    setOpenModal(true);
   };
 
   const { isLoading, error, performFetch, cancelFetch } = useFetch(
@@ -89,15 +88,6 @@ const CreateActivity = () => {
   useEffect(() => {
     return cancelFetch;
   }, []);
-
-  let statusComponent = null;
-  if (error != null) {
-    statusComponent = (
-      <Error>Error while trying to create activity: {error}</Error>
-    );
-  } else if (isLoading) {
-    statusComponent = <Spinner />;
-  }
 
   return (
     <div className="create-activity-page-container">
@@ -144,6 +134,7 @@ const CreateActivity = () => {
             onChange={(value) => {
               setStartAt(value);
             }}
+            required
           />
         </InputFieldContainer>
         <InputFieldContainer className="activity-end-wrapper">
@@ -155,6 +146,7 @@ const CreateActivity = () => {
             onChange={(value) => {
               setEndAt(value);
             }}
+            required
           />
         </InputFieldContainer>
         <InputFieldContainer className="activity-description-wrapper">
@@ -216,16 +208,33 @@ const CreateActivity = () => {
               setMaxPeople([value]);
             }}
             type="number"
+            required
           />
         </InputFieldContainer>
 
-        <Button className="btn-block" type="submit">
+        <Button
+          className="btn-block"
+          type="submit"
+          onClick={() => {
+            setOpenModal(true);
+          }}
+        >
           Create Activity
         </Button>
       </Form>
-      {statusComponent && statusComponent}
 
-      {openModal && statusComponent == null && (
+      {isLoading && <Spinner />}
+
+      {openModal && error && Object.keys(error).length !== 0 && (
+        <Modal setOpenModal={setOpenModal}>
+          <div className="created-news-details-wrapper">
+            <h2>Failed to Create Activity </h2>
+            <div>{error}</div>
+          </div>
+        </Modal>
+      )}
+
+      {openModal && activityData && (
         <Modal setOpenModal={setOpenModal}>
           <div className="created-news-details-wrapper">
             <h2>Activity Created</h2>
