@@ -17,6 +17,10 @@ const News = () => {
   const { userDetails } = useUserDetails();
 
   const onSuccess = (response) => {
+    if (!response.result) {
+      setNewsData();
+    }
+
     setNewsData(response.result);
   };
   const { isLoading, error, performFetch, cancelFetch } = useFetch(
@@ -56,13 +60,10 @@ const News = () => {
       </div>
 
       <div className="news-section-wrapper">
-        {newsData && newsData.length === 0 && (
+        {!newsData && (
           <div className="no-news-text-wrapper">
-            {newsCategory === "all" ? (
-              <p>There is no news yet</p>
-            ) : (
-              <p>There is no news in this category yet</p>
-            )}
+            {" "}
+            {`There is no news ${newsCategory ? `in ${newsCategory} ` : ""}`}
           </div>
         )}
         {newsData &&
