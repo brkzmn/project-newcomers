@@ -41,11 +41,10 @@ export const contactUs = async (req, res) => {
         replyTo: email,
       };
 
-      transporter.sendMail(mail, (err, data) => {
+      transporter.sendMail(mail, (err) => {
         if (err) {
           throw err;
         } else {
-          logInfo(data);
           res.status(200).json({
             success: true,
           });
