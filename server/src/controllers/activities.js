@@ -22,21 +22,6 @@ export const getUserActivities = async (req, res) => {
     });
   } catch (error) {
     handleRequestError(error, res);
-    // const errors = [];
-    // if (error.errors) {
-    //   Object.keys(error.errors).forEach((key) => {
-    //     errors.push(`${key} : ${error.errors[key].message}`);
-    //   });
-
-    //   return res
-    //     .status(400)
-    //     .json({ success: false, msg: `Bad Request: ${errors}` });
-    // } else {
-    //   return res.status(500).json({
-    //     success: false,
-    //     msg: `Server Error: ${error.message}`,
-    //   });
-    // }
   }
 };
 
@@ -62,21 +47,6 @@ export const getActivities = async (req, res) => {
     }
   } catch (error) {
     handleRequestError(error, res);
-    // const errors = [];
-    // if (error.errors) {
-    //   Object.keys(error.errors).forEach((key) => {
-    //     errors.push(`${key} : ${error.errors[key].message}`);
-    //   });
-
-    //   return res
-    //     .status(400)
-    //     .json({ success: false, msg: `Bad Request: ${errors}` });
-    // } else {
-    //   return res.status(500).json({
-    //     success: false,
-    //     msg: `Server Error: ${error.message}`,
-    //   });
-    // }
   }
 };
 
@@ -108,22 +78,6 @@ export const createActivity = async (req, res) => {
     return res.status(201).json({ success: true, result: createdActivity });
   } catch (error) {
     handleRequestError(error, res);
-    // const errors = [];
-
-    // if (error.errors) {
-    //   Object.keys(error.errors).forEach((key) => {
-    //     errors.push(`${key} : ${error.errors[key].message}`);
-    //   });
-
-    //   return res
-    //     .status(400)
-    //     .json({ success: false, msg: `BAD REQUEST: ${errors}` });
-    // } else {
-    //   return res.status(500).json({
-    //     success: false,
-    //     msg: `Server Error: ${error.message} not uploaded`,
-    //   });
-    // }
   }
 };
 
@@ -133,22 +87,6 @@ export const deleteActivity = async (req, res) => {
     logInfo(userName);
   } catch (error) {
     handleRequestError(error, res);
-    // const errors = [];
-    // if (error.errors) {
-    //   Object.keys(error.errors).forEach((key) => {
-    //     errors.push(`${key} : ${error.errors[key].message}`);
-    //   });
-    //   logError(error);
-    //   return res
-    //     .status(400)
-    //     .json({ success: false, msg: `Bad Request: ${errors}` });
-    // } else {
-    //   logError(error);
-    //   return res.status(500).json({
-    //     success: false,
-    //     msg: `Server Error: ${error.message}`,
-    //   });
-    // }
   }
 };
 
@@ -195,22 +133,6 @@ export const joinToActivity = async (req, res) => {
     });
   } catch (error) {
     handleRequestError(error, res);
-    // const errors = [];
-    // if (error.errors) {
-    //   Object.keys(error.errors).forEach((key) => {
-    //     errors.push(`${key} : ${error.errors[key].message}`);
-    //   });
-    //   logError(error);
-    //   return res
-    //     .status(400)
-    //     .json({ success: false, msg: `Bad Request: ${errors}` });
-    // } else {
-    //   logError(error);
-    //   return res.status(500).json({
-    //     success: false,
-    //     msg: `Server Error: ${error.message}`,
-    //   });
-    // }
   }
 };
 
@@ -228,21 +150,5 @@ export const getUserActivitiesList = async (req, res) => {
     });
   } catch (error) {
     handleRequestError(error, res);
-    // const errors = [];
-    // if (error.errors) {
-    //   Object.keys(error.errors).forEach((key) => {
-    //     errors.push(`${key} : ${error.errors[key].message}`);
-    //   });
-    //   logError(error);
-    //   return res
-    //     .status(400)
-    //     .json({ success: false, msg: `Bad Request: ${errors}` });
-    // } else {
-    //   logError(error);
-    //   return res.status(500).json({
-    //     success: false,
-    //     msg: `Server Error: ${error.message}`,
-    //   });
-    // }
   }
 };

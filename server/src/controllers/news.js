@@ -25,7 +25,6 @@ export const getNews = async (req, res) => {
       });
 
       if (news.length === 0) {
-        console.log(news, "news in politics");
         res.status(204).send();
       } else {
         res.status(200).json({ success: true, result: news });
@@ -38,25 +37,23 @@ export const getNews = async (req, res) => {
 
 export const getNewsDetails = async (req, res) => {
   try {
-    const userName = req.userName;
     const { newsId } = req.params;
 
     const newsDetails = await News.find({
       _id: mongoose.Types.ObjectId(newsId),
     });
-    if (!userName) {
-      throw new Error("You are not authenticated.");
-    } else if (!newsId) {
-      throw new Error("News Id in undefined");
-    } else if (!newsDetails) {
-      throw new Error("News Details couldn't be found in the database");
+
+    if (!newsId) {
+      createRequestError("News Id in undefined", 400);
+    }
+
+    if (!newsDetails) {
+      res.status(204).send();
     } else {
       res.status(200).json({ success: true, result: newsDetails });
     }
-  } catch (e) {
-    res
-      .status(500)
-      .json({ success: false, msg: "Unable to get news, try again later" });
+  } catch (error) {
+    handleRequestError(error, res);
   }
 };
 
