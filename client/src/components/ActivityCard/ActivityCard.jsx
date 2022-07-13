@@ -45,31 +45,33 @@ const ActivityCard = ({ activity, userId, setActivityNumber }) => {
     return cancelFetch;
   }, []);
 
-  const onGetUserActivitiesSuccess = (response) => {
-    setUserIsJoining(response.getUserActivitiesList.includes(activity._id));
+  const onDeleteActivitySuccess = () => {
+    setActivityNumber((prevNumber) => prevNumber - 1);
   };
+
   const {
-    // isLoading: isUserActivitiesLoading,
-    // error: userActivitiesError,
-    performFetch: performActivitiesFetch,
-    cancelFetch: cancelActivitiesFetch,
-  } = useFetch(
-    `/activities/user-activities-list/${userId}`,
-    onGetUserActivitiesSuccess
-  );
+    performFetch: performDeleteActivityFetch,
+    cancelFetch: cancelDeleteActivityFetch,
+  } = useFetch("/activities/delete", onDeleteActivitySuccess);
 
-  useEffect(() => {
-    performActivitiesFetch({
+  const handleDelete = () => {
+    performDeleteActivityFetch({
+      method: "DELETE",
       credentials: "include",
+      body: JSON.stringify({
+        activityId: activity._id,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
     });
-
-    return cancelActivitiesFetch;
-  }, [userIsJoining]);
+  };
+  useEffect(() => {
+    return cancelDeleteActivityFetch;
+  }, []);
 
   const startDate = new Date(activity.startAt).toLocaleString("nl-NL");
   const endDate = new Date(activity.endAt).toLocaleString("nl-NL");
-
-  console.log("activity card refreshed");
 
   return (
     <IconContext.Provider
@@ -118,16 +120,19 @@ const ActivityCard = ({ activity, userId, setActivityNumber }) => {
           </span>
           {activity.location.city}
         </p>
-        <div
-          title="Delete Activity"
-          className="delete-activity-btn"
-          onClick={() => {
-            console.log("clicked");
-            setActivityNumber((prevNumber) => prevNumber - 1);
-          }}
-        >
-          <ActivityDeleteBtn />
-        </div>
+        {userId === activity.createdBy && (
+          <div
+            title="Delete Activity"
+            className="delete-activity-btn"
+            onClick={() => {
+              console.log("clicked");
+              handleDelete();
+            }}
+          >
+            <ActivityDeleteBtn />
+          </div>
+        )}
+
         <div
           title="Join"
           onClick={() => {

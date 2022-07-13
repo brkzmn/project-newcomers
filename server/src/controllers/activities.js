@@ -83,8 +83,12 @@ export const createActivity = async (req, res) => {
 
 export const deleteActivity = async (req, res) => {
   try {
-    const userName = req.userName;
-    logInfo(userName);
+    console.log("clicked server activity");
+    const deletedActivity = await Activity.deleteOne({
+      _id: req.body.activityId,
+    });
+    console.log(deletedActivity);
+    res.status(204).send();
   } catch (error) {
     handleRequestError(error, res);
   }

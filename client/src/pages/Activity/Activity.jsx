@@ -33,7 +33,6 @@ const Activity = () => {
     return cancelFetch;
   }, [activityCategory, activityNumber]);
 
-  console.log(activityNumber, "activitynumber");
   return (
     <div
       className={
