@@ -9,8 +9,11 @@ import CheckMarkSvg from "./icons/CheckMarkSvg";
 import { ThemeContext } from "../../ThemeContext";
 import { MdTimer, MdTimerOff, MdOutlineLocationOn } from "react-icons/md";
 import { IconContext } from "react-icons";
+import ActivityDeleteBtn from "./ActivityDeleteBtn";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const ActivityCard = ({ activity, userId }) => {
+const ActivityCard = ({ activity, userId, setActivityNumber }) => {
   const [userIsJoining, setUserIsJoining] = useState(null);
   const { isDarkMode } = useContext(ThemeContext);
 
@@ -44,30 +47,51 @@ const ActivityCard = ({ activity, userId }) => {
     return cancelFetch;
   }, []);
 
-  const onGetUserActivitiesSuccess = (response) => {
-    setUserIsJoining(response.getUserActivitiesList.includes(activity._id));
-  };
-  const {
-    // isLoading: isUserActivitiesLoading,
-    // error: userActivitiesError,
-    performFetch: performActivitiesFetch,
-    cancelFetch: cancelActivitiesFetch,
-  } = useFetch(
-    `/activities/user-activities-list/${userId}`,
-    onGetUserActivitiesSuccess
-  );
-
-  useEffect(() => {
-    performActivitiesFetch({
-      credentials: "include",
+  const onDeleteActivitySuccess = () => {
+    toast.info("Activity deleted", {
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
     });
 
-    return cancelActivitiesFetch;
-  }, [userIsJoining]);
+    setActivityNumber((prevNumber) => prevNumber - 1);
+  };
+
+  const {
+    error: deleteActivityError,
+    performFetch: performDeleteActivityFetch,
+    cancelFetch: cancelDeleteActivityFetch,
+  } = useFetch("/activities/delete", onDeleteActivitySuccess);
+
+  const handleDelete = () => {
+    performDeleteActivityFetch({
+      method: "DELETE",
+      credentials: "include",
+      body: JSON.stringify({
+        activityId: activity._id,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
+  };
+  useEffect(() => {
+    return cancelDeleteActivityFetch;
+  }, []);
 
   const startDate = new Date(activity.startAt).toLocaleString("nl-NL");
   const endDate = new Date(activity.endAt).toLocaleString("nl-NL");
 
+  if (deleteActivityError) {
+    toast.error("Failed to delete the activity", {
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      toastId: "error1",
+    });
+  }
   return (
     <IconContext.Provider
       value={{
@@ -115,6 +139,18 @@ const ActivityCard = ({ activity, userId }) => {
           </span>
           {activity.location.city}
         </p>
+        {userId === activity.createdBy && (
+          <div
+            title="Delete Activity"
+            className="delete-activity-btn"
+            onClick={() => {
+              handleDelete();
+            }}
+          >
+            <ActivityDeleteBtn />
+          </div>
+        )}
+
         <div
           title="Join"
           onClick={() => {

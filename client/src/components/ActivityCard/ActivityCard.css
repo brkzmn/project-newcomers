@@ -12,6 +12,7 @@
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   border-radius: 3%;
+  position: relative;
 }
 
 .activity-card-wrapper.activity-card-wrapper-dark {
@@ -73,7 +74,7 @@
   align-items: end;
 }
 .join-icon-wrapper span {
-  background-color: orange;
+  background-color: hsla(35, 78%, 49%, 0.9);
   color: white;
   padding: 0.2rem;
   margin-right: 0.2rem;
@@ -129,6 +130,25 @@
 
 .activity-card-attendees {
   margin-bottom: auto;
+}
+
+.delete-activity-btn {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+}
+
+.delete-activity-btn svg:hover {
+  width: 2.2rem;
+  height: 2.2rem;
+  cursor: pointer;
+}
+
+.delete-activity-btn svg:active {
+  width: 2.2rem;
+  height: 2.2rem;
+  cursor: pointer;
+  fill: hsla(35, 78%, 49%, 0.9);
 }
 
 @media screen and (min-width: 480px) {

@@ -1,8 +1,8 @@
 import Activity from "../models/Activity.js";
 import User from "../models/User.js";
 import mongoose from "mongoose";
-import { logInfo } from "../util/logging.js";
 import handleRequestError from "../util/handleRequestError.js";
+import createRequestError from "../util/createRequestError.js";
 
 export const getUserActivities = async (req, res) => {
   try {
@@ -83,8 +83,11 @@ export const createActivity = async (req, res) => {
 
 export const deleteActivity = async (req, res) => {
   try {
-    const userName = req.userName;
-    logInfo(userName);
+    await Activity.deleteOne({
+      _id: req.body.activityId,
+    });
+
+    res.status(204).send();
   } catch (error) {
     handleRequestError(error, res);
   }
@@ -130,23 +133,6 @@ export const joinToActivity = async (req, res) => {
 
     res.status(200).json({
       success: true,
-    });
-  } catch (error) {
-    handleRequestError(error, res);
-  }
-};
-
-export const getUserActivitiesList = async (req, res) => {
-  try {
-    const { userId } = req.params;
-    const userDetails = await User.find({
-      _id: mongoose.Types.ObjectId(userId),
-    });
-    const getUserActivitiesList = userDetails[0].activities;
-
-    return res.status(200).json({
-      success: true,
-      getUserActivitiesList,
     });
   } catch (error) {
     handleRequestError(error, res);
