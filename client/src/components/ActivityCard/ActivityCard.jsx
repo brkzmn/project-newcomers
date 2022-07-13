@@ -10,6 +10,8 @@ import { ThemeContext } from "../../ThemeContext";
 import { MdTimer, MdTimerOff, MdOutlineLocationOn } from "react-icons/md";
 import { IconContext } from "react-icons";
 import ActivityDeleteBtn from "./ActivityDeleteBtn";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ActivityCard = ({ activity, userId, setActivityNumber }) => {
   const [userIsJoining, setUserIsJoining] = useState(null);
@@ -46,10 +48,18 @@ const ActivityCard = ({ activity, userId, setActivityNumber }) => {
   }, []);
 
   const onDeleteActivitySuccess = () => {
+    toast.info("Activity deleted", {
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
     setActivityNumber((prevNumber) => prevNumber - 1);
   };
 
   const {
+    error: deleteActivityError,
     performFetch: performDeleteActivityFetch,
     cancelFetch: cancelDeleteActivityFetch,
   } = useFetch("/activities/delete", onDeleteActivitySuccess);
@@ -73,6 +83,15 @@ const ActivityCard = ({ activity, userId, setActivityNumber }) => {
   const startDate = new Date(activity.startAt).toLocaleString("nl-NL");
   const endDate = new Date(activity.endAt).toLocaleString("nl-NL");
 
+  if (deleteActivityError) {
+    toast.error("Failed to delete the activity", {
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      toastId: "error1",
+    });
+  }
   return (
     <IconContext.Provider
       value={{
@@ -125,7 +144,6 @@ const ActivityCard = ({ activity, userId, setActivityNumber }) => {
             title="Delete Activity"
             className="delete-activity-btn"
             onClick={() => {
-              console.log("clicked");
               handleDelete();
             }}
           >
