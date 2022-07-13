@@ -11,7 +11,7 @@ import { MdTimer, MdTimerOff, MdOutlineLocationOn } from "react-icons/md";
 import { IconContext } from "react-icons";
 import ActivityDeleteBtn from "./ActivityDeleteBtn";
 
-const ActivityCard = ({ activity, userId }) => {
+const ActivityCard = ({ activity, userId, setActivityNumber }) => {
   const [userIsJoining, setUserIsJoining] = useState(null);
   const { isDarkMode } = useContext(ThemeContext);
 
@@ -69,6 +69,8 @@ const ActivityCard = ({ activity, userId }) => {
   const startDate = new Date(activity.startAt).toLocaleString("nl-NL");
   const endDate = new Date(activity.endAt).toLocaleString("nl-NL");
 
+  console.log("activity card refreshed");
+
   return (
     <IconContext.Provider
       value={{
@@ -116,7 +118,14 @@ const ActivityCard = ({ activity, userId }) => {
           </span>
           {activity.location.city}
         </p>
-        <div title="Delete Activity" className="delete-activity-btn">
+        <div
+          title="Delete Activity"
+          className="delete-activity-btn"
+          onClick={() => {
+            console.log("clicked");
+            setActivityNumber((prevNumber) => prevNumber - 1);
+          }}
+        >
           <ActivityDeleteBtn />
         </div>
         <div

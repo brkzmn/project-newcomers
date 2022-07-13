@@ -15,9 +15,11 @@ const Activity = () => {
   const [activityCategory, setActivityCategory] = useState("all");
   const [activities, setActivities] = useState(null);
   const { isDarkMode } = useContext(ThemeContext);
+  const [activityNumber, setActivityNumber] = useState(null);
 
   const onSuccess = (response) => {
     setActivities(response.result);
+    setActivityNumber(response.result.length);
   };
   const { isLoading, error, performFetch, cancelFetch } = useFetch(
     `/activities/category/${activityCategory}`,
@@ -29,8 +31,9 @@ const Activity = () => {
     });
 
     return cancelFetch;
-  }, [activityCategory]);
+  }, [activityCategory, activityNumber]);
 
+  console.log(activityNumber, "activitynumber");
   return (
     <div
       className={
@@ -83,6 +86,7 @@ const Activity = () => {
                 key={activity._id}
                 activity={activity}
                 userId={userDetails._id}
+                setActivityNumber={setActivityNumber}
               />
             );
           })}
