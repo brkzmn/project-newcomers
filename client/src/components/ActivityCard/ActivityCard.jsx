@@ -9,6 +9,7 @@ import CheckMarkSvg from "./icons/CheckMarkSvg";
 import { ThemeContext } from "../../ThemeContext";
 import { MdTimer, MdTimerOff, MdOutlineLocationOn } from "react-icons/md";
 import { IconContext } from "react-icons";
+import ActivityDeleteBtn from "./ActivityDeleteBtn";
 
 const ActivityCard = ({ activity, userId }) => {
   const [userIsJoining, setUserIsJoining] = useState(null);
@@ -115,6 +116,9 @@ const ActivityCard = ({ activity, userId }) => {
           </span>
           {activity.location.city}
         </p>
+        <div title="Delete Activity" className="delete-activity-btn">
+          <ActivityDeleteBtn />
+        </div>
         <div
           title="Join"
           onClick={() => {
