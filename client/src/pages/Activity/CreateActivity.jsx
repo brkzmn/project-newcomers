@@ -15,17 +15,17 @@ import useUserDetails from "../../hooks/useUserDetails";
 import Modal from "../../components/Modal/Modal";
 
 const CreateActivity = () => {
-  const [title, setTitle] = useState(null);
-  const [category, setCategory] = useState(null);
-  const [startAt, setStartAt] = useState(null);
-  const [endAt, setEndAt] = useState(null);
-  const [description, setDescription] = useState(null);
-  const [maxPeople, setMaxPeople] = useState(null);
-  const [activityData, setActivityData] = useState(null);
-  const [city, setCity] = useState(null);
-  const [street, setStreet] = useState(null);
-  const [postCode, setPostCode] = useState(null);
-  const [openModal, setOpenModal] = useState(false);
+  const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("");
+  const [startAt, setStartAt] = useState("");
+  const [endAt, setEndAt] = useState("");
+  const [description, setDescription] = useState("");
+  const [maxPeople, setMaxPeople] = useState("");
+  const [activityData, setActivityData] = useState("");
+  const [city, setCity] = useState("");
+  const [street, setStreet] = useState("");
+  const [postCode, setPostCode] = useState("");
+  const [openModal, setOpenModal] = useState("");
 
   const { userDetails } = useUserDetails();
 
@@ -36,15 +36,15 @@ const CreateActivity = () => {
   };
 
   const clearForm = () => {
-    setTitle(null);
-    setCategory(null);
-    setStartAt(null);
-    setEndAt(null);
-    setDescription(null);
-    setMaxPeople(null);
-    setCity(null);
-    setStreet(null);
-    setPostCode(null);
+    setTitle("");
+    setCategory("");
+    setStartAt("");
+    setEndAt("");
+    setDescription("");
+    setMaxPeople("");
+    setCity("");
+    setStreet("");
+    setPostCode("");
   };
 
   const onSuccess = (response) => {
