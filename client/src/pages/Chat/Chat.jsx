@@ -5,7 +5,6 @@ import useUserDetails from "../../hooks/useUserDetails";
 import RecentConnections from "../../components/RecentConnections/RecentConnections";
 import { Message } from "./Message";
 import useFetch from "../../hooks/useFetch";
-import { logInfo } from "../../../../server/src/util/logging.js";
 import { Buffer } from "buffer";
 import Spinner from "../../components/Spinner/Spinner";
 import Error from "../../components/Error/Error";
@@ -24,17 +23,12 @@ const Chat = () => {
   const { isDarkMode } = useContext(ThemeContext);
   const { socket } = useContext(SocketContext);
 
-  const onGetSuccess = (response) => {
-    const { success } = response;
-    logInfo(success);
-  };
-
   const {
     isLoading: isGetLoading,
     error: getError,
     performFetch: performGetFetch,
     cancelFetch: cancelGetFetch,
-  } = useFetch("/messages", onGetSuccess);
+  } = useFetch("/messages");
 
   useEffect(() => {
     performGetFetch({
@@ -59,7 +53,6 @@ const Chat = () => {
   useEffect(() => {
     connectSocket();
 
-    // socket.on("id", () => {});
     socket.on("chatHistory", (data) => {
       data.forEach((chat) => {
         const idArray = chat._id.split(" ");
@@ -81,12 +74,8 @@ const Chat = () => {
     setMessages(() => [...(Array.isArray(msg) ? msg : [msg])]);
   };
 
-  const onSuccess = () => {};
-
-  const { isLoading, error, performFetch, cancelFetch } = useFetch(
-    "/messages/post",
-    onSuccess
-  );
+  const { isLoading, error, performFetch, cancelFetch } =
+    useFetch("/messages/post");
 
   useEffect(() => {
     return () => {
