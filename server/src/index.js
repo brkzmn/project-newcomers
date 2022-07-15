@@ -50,7 +50,6 @@ io.use(async (socket, next) => {
       } else {
         const userName = decoded.userName;
         socket.userName = userName;
-        logInfo("clicked");
         socket.query = socket.handshake.query.queryName;
         next();
       }
@@ -65,7 +64,6 @@ io.on("connection", async (socket) => {
   try {
     logInfo("Client connected...");
     socket.emit("id", socket.id);
-    logInfo(socket.userName);
     socket_id.push(socket.id);
     const userName = socket.userName;
     const user = await User.findOne({ userName });
@@ -73,27 +71,20 @@ io.on("connection", async (socket) => {
     const chatLog = await MessageSchema.statics.latest(userId);
     socket.emit("chatHistory", chatLog);
     socket.emit("contactHistory", chatLog);
-    /*  if (socket_id[0] === socket.id) {
-            // remove the connection listener for any subsequent
-            // connections with the same ID
-            io.removeAllListeners("connection");
-          } */
+
     socket.on("message", async (msg) => {
       try {
         let message = await Message.create(msg);
         io.emit("message", message);
-        logInfo(message);
       } catch (error) {
         logError(error);
       }
     });
     socket.on("contacts", async (contactsIds) => {
       try {
-        logInfo(contactsIds);
         const contactsUsers = await User.find({
           _id: { $in: [...contactsIds] },
         });
-        logInfo(contactsUsers.length);
         socket.emit("sendContacts", contactsUsers);
       } catch (err) {
         logError(err);

@@ -1,5 +1,5 @@
 import User from "../models/User.js";
-import { logInfo, logError } from "../util/logging.js";
+import { logError } from "../util/logging.js";
 
 export const findMatches = async (req, res) => {
   try {
@@ -14,15 +14,11 @@ export const findMatches = async (req, res) => {
           "BAD REQUEST: Province & at least 1 interest are required."
         );
       } else {
-        logInfo(`${province}, ${interests}`);
-
         // Get the logged in user
         const currentUserType = await User.findOne(
           { userName },
           { userType: 1 }
         );
-
-        logInfo(`currentUserType ${currentUserType.userType}`);
 
         // Filter by province
         const usersByProvince = await User.find({
