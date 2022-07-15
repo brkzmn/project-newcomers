@@ -23,6 +23,7 @@ const Chat = () => {
   const receiverId = refId;
   const { isDarkMode } = useContext(ThemeContext);
   const { socket } = useContext(SocketContext);
+
   const onGetSuccess = (response) => {
     const { success } = response;
     logInfo(success);
@@ -52,21 +53,16 @@ const Chat = () => {
 
   useEffect(() => {
     socket.on("message", (msg) => {
-      logInfo("You have a new message");
       addMessage(msg);
     });
   }, []);
   useEffect(() => {
     connectSocket();
 
-    socket.on("id", (data) => {
-      logInfo(data);
-    });
+    // socket.on("id", () => {});
     socket.on("chatHistory", (data) => {
-      logInfo(data);
       data.forEach((chat) => {
         const idArray = chat._id.split(" ");
-        logInfo(idArray);
         if (idArray.includes(userId) && idArray.includes(receiverId)) {
           addHistory(chat.messages);
         }
@@ -85,10 +81,7 @@ const Chat = () => {
     setMessages(() => [...(Array.isArray(msg) ? msg : [msg])]);
   };
 
-  const onSuccess = (response) => {
-    const { messages } = response;
-    logInfo(messages);
-  };
+  const onSuccess = () => {};
 
   const { isLoading, error, performFetch, cancelFetch } = useFetch(
     "/messages/post",
