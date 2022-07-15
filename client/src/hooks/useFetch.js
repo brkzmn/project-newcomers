@@ -58,15 +58,21 @@ const useFetch = (route, onReceived) => {
 
       // successful response with no body
       if (res.status == 204) {
-        onReceived(res.result == null);
-        setIsLoading(false);
+        if (onReceived) {
+          onReceived(res.result == null);
+          setIsLoading(false);
+        } else {
+          setIsLoading(false);
+        }
         return;
       }
 
       const jsonResult = await res.json();
 
       if (jsonResult.success === true) {
-        onReceived(jsonResult);
+        if (onReceived) {
+          onReceived(jsonResult);
+        }
       } else {
         setError(
           jsonResult.msg ||

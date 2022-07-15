@@ -5,7 +5,6 @@ import useUserDetails from "../../hooks/useUserDetails";
 import RecentConnections from "../../components/RecentConnections/RecentConnections";
 import { Message } from "./Message";
 import useFetch from "../../hooks/useFetch";
-import { logInfo } from "../../../../server/src/util/logging.js";
 import { Buffer } from "buffer";
 import Spinner from "../../components/Spinner/Spinner";
 import Error from "../../components/Error/Error";
@@ -23,17 +22,13 @@ const Chat = () => {
   const receiverId = refId;
   const { isDarkMode } = useContext(ThemeContext);
   const { socket } = useContext(SocketContext);
-  const onGetSuccess = (response) => {
-    const { success } = response;
-    logInfo(success);
-  };
 
   const {
     isLoading: isGetLoading,
     error: getError,
     performFetch: performGetFetch,
     cancelFetch: cancelGetFetch,
-  } = useFetch("/messages", onGetSuccess);
+  } = useFetch("/messages");
 
   useEffect(() => {
     performGetFetch({
@@ -52,21 +47,15 @@ const Chat = () => {
 
   useEffect(() => {
     socket.on("message", (msg) => {
-      logInfo("You have a new message");
       addMessage(msg);
     });
   }, []);
   useEffect(() => {
     connectSocket();
 
-    socket.on("id", (data) => {
-      logInfo(data);
-    });
     socket.on("chatHistory", (data) => {
-      logInfo(data);
       data.forEach((chat) => {
         const idArray = chat._id.split(" ");
-        logInfo(idArray);
         if (idArray.includes(userId) && idArray.includes(receiverId)) {
           addHistory(chat.messages);
         }
@@ -85,15 +74,8 @@ const Chat = () => {
     setMessages(() => [...(Array.isArray(msg) ? msg : [msg])]);
   };
 
-  const onSuccess = (response) => {
-    const { messages } = response;
-    logInfo(messages);
-  };
-
-  const { isLoading, error, performFetch, cancelFetch } = useFetch(
-    "/messages/post",
-    onSuccess
-  );
+  const { isLoading, error, performFetch, cancelFetch } =
+    useFetch("/messages/post");
 
   useEffect(() => {
     return () => {

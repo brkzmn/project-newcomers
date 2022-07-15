@@ -2,7 +2,6 @@ import Activity from "../models/Activity.js";
 import User from "../models/User.js";
 import mongoose from "mongoose";
 import handleRequestError from "../util/handleRequestError.js";
-import createRequestError from "../util/createRequestError.js";
 
 export const getUserActivities = async (req, res) => {
   try {

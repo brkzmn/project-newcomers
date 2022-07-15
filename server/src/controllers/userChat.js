@@ -11,7 +11,7 @@ const getUserRecentChat = async (req, res) => {
       chatParticipants: { $in: [mongoose.Types.ObjectId(user._id)] },
     })
       .sort({ timestamp: -1 })
-      .limit(10);
+      .limit(100);
 
     const recentChatParticipants = [];
     recentChats.forEach((chat) => {

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { SocketContext } from "../../SocketContext";
 import useUserDetails from "../../hooks/useUserDetails";
-import { logInfo } from "../../../../server/src/util/logging.js";
+// import { logInfo } from "../../../../server/src/util/logging.js";
 import Spinner from "../../components/Spinner/Spinner";
 import Error from "../../components/Error/Error";
 import "./RecentConnections.css";
@@ -24,15 +24,13 @@ const RecentConnections = ({ parent }) => {
       const idArray = chat._id.split(" ").filter((elem) => elem !== "and");
       if (idArray.includes(userId)) {
         const contact = idArray.filter((id) => id !== userId);
-        logInfo(contact);
+        // logInfo(contact);
         contactsIdsArray.push(contact[0]);
       }
     });
     cb(contactsIdsArray);
   }
-  /*  useEffect(() => {
-    window.addEventListener("load", () => socket.connect())
-  }) */
+
   useEffect(() => {
     socket.connect();
 
