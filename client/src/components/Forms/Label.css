@@ -9,3 +9,7 @@
   margin-bottom: 0.1rem;
   vertical-align: middle;
 }
+
+.form .input-field-container .label {
+  margin-bottom: 0.4rem;
+}

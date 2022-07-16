@@ -93,7 +93,7 @@ const CreateActivity = () => {
     <div className="create-activity-page-container">
       <Form onSubmit={handleSubmit} title="Create Activity">
         <InputFieldContainer className="activity-title-wrapper">
-          <Label>Activity Title</Label>
+          <Label>Title</Label>
           <Input
             name="activityTitle"
             value={title}
@@ -105,7 +105,7 @@ const CreateActivity = () => {
           />
         </InputFieldContainer>
         <InputFieldContainer className="activity-category-wrapper">
-          <Label>Activity Category</Label>
+          <Label>Category</Label>
           <Select
             value={category}
             title="Activity Category"
@@ -126,7 +126,7 @@ const CreateActivity = () => {
           />
         </InputFieldContainer>
         <InputFieldContainer className="activity-start-wrapper">
-          <Label>Activity Start At:</Label>
+          <Label>Start At</Label>
           <DateTime
             name="activityStart"
             value={startAt}
@@ -138,7 +138,7 @@ const CreateActivity = () => {
           />
         </InputFieldContainer>
         <InputFieldContainer className="activity-end-wrapper">
-          <Label>Activity End At:</Label>
+          <Label>End At</Label>
           <DateTime
             name="activityEnd"
             value={endAt}
@@ -150,7 +150,7 @@ const CreateActivity = () => {
           />
         </InputFieldContainer>
         <InputFieldContainer className="activity-description-wrapper">
-          <Label>Activity Description</Label>
+          <Label>Description</Label>
           <TextAreaInput
             name="activityDescription"
             value={description}
@@ -162,7 +162,7 @@ const CreateActivity = () => {
           />
         </InputFieldContainer>
         <InputFieldContainer className="activity-city-wrapper">
-          <Label>Activity City</Label>
+          <Label>City</Label>
           <Input
             name="activityCity"
             value={city}
@@ -174,7 +174,7 @@ const CreateActivity = () => {
           />
         </InputFieldContainer>
         <InputFieldContainer className="activity-street-wrapper">
-          <Label>Activity Street</Label>
+          <Label>Street</Label>
           <Input
             name="activityStreet"
             value={street}
@@ -186,7 +186,7 @@ const CreateActivity = () => {
           />
         </InputFieldContainer>
         <InputFieldContainer className="activity-post-code-wrapper">
-          <Label>Activity Postcode</Label>
+          <Label>Postcode</Label>
           <Input
             name="activityPostCode"
             value={postCode}
@@ -199,7 +199,7 @@ const CreateActivity = () => {
         </InputFieldContainer>
 
         <InputFieldContainer className="activity-max-people-wrapper">
-          <Label>Activity Max People</Label>
+          <Label>Max People</Label>
           <Input
             name="activityMaxPeople"
             value={maxPeople}
