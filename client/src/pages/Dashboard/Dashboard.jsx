@@ -11,7 +11,6 @@ import Button from "../../components/Button";
 import Spinner from "../../components/Spinner/Spinner";
 import Error from "../../components/Error/Error";
 import RecentConnections from "../../components/RecentConnections/RecentConnections";
-import { Buffer } from "buffer";
 
 const Dashboard = () => {
   const [userActivities, setUserActivities] = useState(null);
@@ -50,13 +49,18 @@ const Dashboard = () => {
         </h2>
         <div className="user-img-container">
           <img
+            // src={
+            //   userDetails && userDetails.profileImage
+            //     ? `data:image/${
+            //         userDetails.profileImage.contentType
+            //       };base64,${Buffer.from(
+            //         userDetails.profileImage.data.data
+            //       ).toString("base64")}`
+            //     : "https://picsum.photos/200"
+            // }
             src={
               userDetails && userDetails.profileImage
-                ? `data:image/${
-                    userDetails.profileImage.contentType
-                  };base64,${Buffer.from(
-                    userDetails.profileImage.data.data
-                  ).toString("base64")}`
+                ? userDetails.profileImage
                 : "https://picsum.photos/200"
             }
             alt={userDetails && userDetails.firstName}

@@ -25,13 +25,7 @@ const UserCard = ({ user, children, onClick, parent }) => {
       <div className="card-img-container">
         <img
           src={
-            user.profileImage
-              ? `data:image/${
-                  user.profileImage.contentType
-                };base64,${Buffer.from(user.profileImage.data.data).toString(
-                  "base64"
-                )}`
-              : "https://picsum.photos/200"
+            user.profileImage ? user.profileImage : "https://picsum.photos/200"
           }
         />
       </div>

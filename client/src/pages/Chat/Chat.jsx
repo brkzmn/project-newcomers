@@ -5,7 +5,6 @@ import useUserDetails from "../../hooks/useUserDetails";
 import RecentConnections from "../../components/RecentConnections/RecentConnections";
 import { Message } from "./Message";
 import useFetch from "../../hooks/useFetch";
-import { Buffer } from "buffer";
 import Spinner from "../../components/Spinner/Spinner";
 import Error from "../../components/Error/Error";
 import MessageBox from "./MessageBox";
@@ -135,11 +134,7 @@ const Chat = () => {
             <img
               src={
                 receiver && receiver.profileImage
-                  ? `data:image/${
-                      receiver.profileImage.contentType
-                    };base64,${Buffer.from(
-                      receiver.profileImage.data.data
-                    ).toString("base64")}`
+                  ? receiver.profileImage
                   : "https://picsum.photos/200"
               }
               alt={receiver.firstName}
