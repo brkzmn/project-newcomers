@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import News from "../models/News.js";
-import { s3UploadFile } from "./s3Upload.js";
+import s3UploadFile from "./s3UploadFile.js";
 import fs from "fs";
 import util from "util";
 import handleRequestError from "../util/handleRequestError.js";
@@ -77,9 +77,10 @@ export const addNews = async (req, res) => {
         image: uploadedImage.Location,
       };
       const createdNews = await News.create(news);
+      //delete image from project server
       const unlinkFile = util.promisify(fs.unlink);
-
       unlinkFile(file.path);
+
       return res.status(201).json({ success: true, result: createdNews });
     }
   } catch (error) {

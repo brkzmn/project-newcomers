@@ -71,10 +71,7 @@ const userSchema = new mongoose.Schema(
       maxLength: [16, "{VALUE} is too long. Enter a valid Mobile phone number"],
       match: [/[+|00][0-9]{7,15}/, "Please fill a valid phone Number"],
     },
-    profileImage: {
-      data: Buffer,
-      contentType: String,
-    },
+    profileImage: String,
     birthDay: {
       type: Date,
       required: "Required field error! Please add your {PATH} to the form",
@@ -149,6 +146,7 @@ userSchema.pre("save", async function (next) {
     next(error);
   }
 });
+
 userSchema.virtual("age").get(function () {
   const currentDate = new Date();
   //const age = Date.now().getUTCFullYear() - this.birthDay.getUTCFullYear();
@@ -164,6 +162,7 @@ userSchema.methods.isCorrectPassword = async function (password) {
   // Return false if error
   return false;
 };
+
 const User = mongoose.model("user", userSchema);
 //Custom validators to check uniqueness of email & userName
 userSchema.path("email").validate(async function (value) {
