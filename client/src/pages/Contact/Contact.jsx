@@ -86,6 +86,7 @@ const Contact = () => {
         <InputFieldContainer>
           <Label for="name">Name</Label>
           <Input
+            name="name"
             placeholder="Name"
             id="name"
             type="text"
@@ -97,6 +98,7 @@ const Contact = () => {
         <InputFieldContainer>
           <Label for="email">Email</Label>
           <Input
+            name="email"
             placeholder="Email"
             id="email"
             type="email"
@@ -109,6 +111,7 @@ const Contact = () => {
         <InputFieldContainer>
           <Label for="subject">Subject</Label>
           <Input
+            name="subject"
             placeholder="Subject"
             id="subject"
             type="text"
@@ -120,6 +123,7 @@ const Contact = () => {
         <InputFieldContainer className="message-wrapper">
           <Label for="message">Message</Label>
           <TextAreaInput
+            name="message"
             placeholder="Message"
             id="message"
             required
