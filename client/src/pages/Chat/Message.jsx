@@ -2,7 +2,6 @@
 import React, { useContext } from "react";
 import "./Message.css";
 import PropTypes from "prop-types";
-import { Buffer } from "buffer";
 import { ThemeContext } from "../../ThemeContext";
 export const Message = ({ message, align, currentUser, receiver }) => {
   const { theme } = useContext(ThemeContext);

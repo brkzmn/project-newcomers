@@ -200,9 +200,6 @@ export const changePassword = async (req, res) => {
       }
     }
   } catch (error) {
-    logError(error);
-    return res
-      .status(500)
-      .json({ success: false, msg: `Error: ${error.message}` });
+    handleRequestError(error, res);
   }
 };

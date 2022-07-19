@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import "./UserCard.css";
 import PropTypes from "prop-types";
-import { Buffer } from "buffer";
 import { ThemeContext } from "../../ThemeContext";
 
 const UserCard = ({ user, children, onClick, parent }) => {
