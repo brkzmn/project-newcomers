@@ -30,7 +30,7 @@ const DashboardNews = () => {
       )}
       {newsData &&
         newsData.map((news) => {
-          return <DashboardNewsCard key={news.title} news={news} />;
+          return <DashboardNewsCard key={news._id} news={news} />;
         })}
     </div>
   );

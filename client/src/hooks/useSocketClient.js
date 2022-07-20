@@ -1,10 +1,11 @@
 import io from "socket.io-client";
+
 const useSocketClient = (pathName = "", queryData) => {
-  //https://c35-newcomers-develop.herokuapp.com
+  const socketUrl = process.env.SOCKET_SERVER_URL;
+
   let socket;
   if (queryData) {
-    // socket = io.of("https://c35-newcomers-develop.herokuapp.com/", {
-    socket = io.of("http://localhost:5000", {
+    socket = io.of(socketUrl, {
       path: pathName,
       autoConnect: false,
       transports: ["websocket"],
@@ -17,8 +18,7 @@ const useSocketClient = (pathName = "", queryData) => {
       },
     });
   } else if (!queryData) {
-    // socket = io("https://c35-newcomers-develop.herokuapp.com/", {
-    socket = io("http://localhost:5000", {
+    socket = io(socketUrl, {
       path: pathName,
       autoConnect: false,
       transports: ["websocket"],
